@@ -489,46 +489,17 @@
         </div>
 
         <div class="download-section print-hidden">
-            <button class="download-btn" onclick="downloadResume()">
-                📄 Download Resume as PDF
+            <button class="download-btn" onclick="window.print()" title="Print as PDF">
+                🖨️ Print as PDF
             </button>
+            <a class="download-btn" href="./asset/RESUME .pdf" download title="Download as DOC" style="text-decoration:none;display:inline-block;">
+                📄 Download DOC
+            </a>
         </div>
     </div>
 
     <script>
-        function downloadResume() {
-            // Create a new window for printing
-            const printWindow = window.open('', '_blank');
-            const resumeContent = document.getElementById('resume').outerHTML;
-            
-            printWindow.document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>MD Shabbir Ahmad - Resume</title>
-                    <style>
-                        ${document.querySelector('style').innerHTML}
-                        @media print {
-                            body { margin: 0; }
-                            .print-hidden { display: none !important; }
-                        }
-                    </style>
-                </head>
-                <body>
-                    ${resumeContent}
-                </body>
-                </html>
-            `);
-            
-            printWindow.document.close();
-            printWindow.focus();
-            
-            // Wait a bit for content to load, then print
-            setTimeout(() => {
-                printWindow.print();
-                printWindow.close();
-            }, 500);
-        }
+        // Remove the old downloadResume function and use window.print() directly
 
         // Add smooth scroll animations
         document.addEventListener('DOMContentLoaded', function() {
